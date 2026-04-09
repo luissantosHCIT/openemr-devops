@@ -25,6 +25,7 @@ use OpenEMR\Core\OEGlobalsBag;
 
 $sitePath = '/var/www/localhost/htdocs/openemr';
 $type = 'FHIR_TEST_DATA';
+$endpoint = 'http://localhost/apis/default/fhir';
 
 $_GET['site'] = 'default';
 $ignoreAuth = true;
@@ -38,10 +39,13 @@ require_once 'library/standard_tables_capture.inc.php';
 
 function import_bulk_fhir(string $type): void
 {
+    global $endpoint;
     $dirScripts = OEGlobalsBag::getInstance()->getString('temporary_files_dir') . "/$type";
 
     foreach (glob("$dirScripts/*.json") as $resource) {
-        echo $resource;
+        $cmd = 'curl -X POST ' . '-H "Content-Type: application/fhir+json" ' . '-d @' . $resource . ' ' . $endpoint;
+        echo $cmd . '\n';
+        exec($cmd);
     }
 }
 
