@@ -70,5 +70,17 @@ function import_zip(string $file): void {
     temp_dir_cleanup($type);
 }
 
+// Ensure we're running from CLI
+if (php_sapi_name() !== 'cli') {
+    throw RuntimeException('This tool can only be run from the command line');
+}
 
+$contribPath = realpath($sitePath);
+if ($argc > 1) {
+    if (strlen($argv[1])) {
+        $contribPath = realpath($argv[1]);
+    }
+}
+
+import_zip($contribPath);
 
