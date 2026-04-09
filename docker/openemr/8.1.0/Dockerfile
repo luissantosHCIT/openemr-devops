@@ -284,6 +284,7 @@ COPY upgrade/docker-version \
      upgrade/fsupgrade-7.sh \
      upgrade/fsupgrade-8.sh \
      upgrade/fsupgrade-9.sh \
+     upgrade/fsupgrade-10.sh \
      /root/
 
 # Set upgrade scripts as executable (read and execute for owner only)
