@@ -25,7 +25,7 @@ use OpenEMR\Core\OEGlobalsBag;
 
 $sitePath = '/var/www/localhost/htdocs/openemr';
 $type = 'FHIR_TEST_DATA';
-$endpoint = 'http://localhost/apis/default/fhir';
+$endpoint = 'http://localhost/apis/default/fhir/';
 
 $_GET['site'] = 'default';
 $ignoreAuth = true;
